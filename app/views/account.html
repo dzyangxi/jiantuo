@@ -1,0 +1,87 @@
+<div class="panel panel-default">
+    <div class="panel-heading">会计科目</div>
+    <div class="panel-body">
+        <ul class="nav nav-tabs" role="tablist" id="account-tab">
+            <li role="presentation" class="active"><a href="#assets">资产</a></li>
+            <li role="presentation"><a href="#liabilities">负债</a></li>
+            <li role="presentation"><a href="#profit-and-loss">损益</a></li>
+            <li role="presentation"><a href="#owners-equity">所有者权益</a></li>
+            <li role="presentation"><a href="#cost">成本</a></li>
+            <btn sodo-type="new" style="float: right"></btn>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="assets">
+                <div class="sodo-fixed-panel col-md-2" style="border-right: 1px solid #DDD;">
+                    <div class="zTreeWrapper">
+                        <ul id="sodo-account-tree" class="ztree"></ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-default sodo-detail-slide-panel" id="sodo-account-detail-panel">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-pencil"></span>会计科目明细
+                        <a class="glyphicon glyphicon-remove sodo-btn-close"></a>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="account-code" class="col-sm-2 control-label">编码</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="account-code" placeholder="输入编码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="account-name" class="col-sm-2 control-label">名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="account-name" placeholder="输入名称">
+                                </div>
+                            </div>
+                            <div class="col-sm-offset-2">
+                                <btn type="submit" sodo-type="save"></btn>
+                                <btn sodo-type="delete"></btn>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="panel panel-default sodo-right-slide-panel" id="sodo-account-new-panel">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        新增会计科目
+                        <a class="glyphicon glyphicon-remove sodo-btn-close"></a>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="code" class="col-sm-2 control-label">编码</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="code" placeholder="输入编码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="name" placeholder="输入名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <btn type="submit" sodo-type="save"></btn>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="liabilities">...</div>
+            <div class="tab-pane fade" id="profit-and-loss">...</div>
+            <div class="tab-pane fade" id="owners-equity">...</div>
+            <div class="tab-pane fade" id="cost">...</div>
+        </div>
+
+    </div>
+
+
+</div>
+<script src="/scripts/vendor/ztree/jquery.ztree.core-3.5.js"></script>

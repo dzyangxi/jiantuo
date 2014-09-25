@@ -1,0 +1,1268 @@
+{
+   "apiVersion" : "1.0.0",
+   "apis" : [
+      {
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "deprecated" : "true",
+               "items" : {
+                  "$ref" : "Order"
+               },
+               "method" : "GET",
+               "nickname" : "查询用户订单 ",
+               "notes" : "",
+               "parameters" : [
+                  {
+                     "allowMultiple" : true,
+                     "description" : "订单状态 0=已提交,1=成功,2=失败",
+                     "enum" : [ 0, 1, 2 ],
+                     "name" : "status",
+                     "paramType" : "query",
+                     "required" : true,
+                     "type" : "integer"
+                  },
+                  {
+                     "allowMultiple" : true,
+                     "description" : "订单类型,多个类型请用逗号分隔 1=投标，2=满标，3=流标，4=还款，5=充值，6=提现,7=赔付，8=偿还担保 9=回款",
+                     "enum" : [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
+                     "name" : "orderType",
+                     "paramType" : "query",
+                     "required" : false,
+                     "type" : "integer"
+                  },
+                  {
+                     "allowMultiple" : true,
+                     "description" : "起始时间",
+                     "name" : "startDate",
+                     "paramType" : "query",
+                     "required" : false,
+                     "type" : "string"
+                  },
+                  {
+                     "allowMultiple" : true,
+                     "description" : "结束时间",
+                     "name" : "endDate",
+                     "paramType" : "query",
+                     "required" : false,
+                     "type" : "string"
+                  },
+                  {
+                     "allowMultiple" : true,
+                     "description" : "页数",
+                     "name" : "page",
+                     "paramType" : "query",
+                     "required" : false,
+                     "type" : "integer"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 400,
+                     "field" : "错误的字段",
+                     "message" : "参数错误"
+                  },
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  }
+               ],
+               "summary" : "查询用户的订单", 
+               "type" : "array"
+            }
+         ],
+         "path" : "/user/findOrderByUid"
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "method" : "POST",
+               "nickname" : "更新用户",
+               "notes" : "",
+               "parameters" : [
+                  {
+                     "allowMultiple" : false,
+                     "description" : "更新用户数据",
+                     "name" : "body",
+                     "paramType" : "body",
+                     "required" : true,
+                     "type" : "UpdateUser"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 200,
+                     "message" : "更新成功"
+                  },
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  },
+                  {
+                     "code" : 404,
+                     "message" : "用户不存在"
+                  },
+                  {
+                     "code" : 405,
+                     "field" : "phone,name",
+                     "message" : "验证失败"
+                  }
+               ],
+               "summary" : "更新用户数据",
+               "type" : "void"
+            },
+            {
+               "authorizations" : {},
+               "method" : "PUT",
+               "nickname" : "注册用户",
+               "notes" : "",
+               "parameters" : [
+                  {
+                     "allowMultiple" : false,
+                     "description" : "注册全新的用户",
+                     "name" : "body",
+                     "paramType" : "body",
+                     "required" : true,
+                     "type" : "RegUser"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 405,
+                     "message" : "输入内容不合法"
+                  },
+             {
+                     "code" : 200,
+                     "message" : "成功",
+                "bean":{"url":"需要用浏览器访问的地址"}
+                  }
+               ],
+               "summary" : "注册新用户",
+               "type" : "void"
+            }
+         ],
+         "path" : "/user"
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "items" : {
+                  "$ref" : "UserLoanInfo"
+               },
+               "method" : "GET",
+               "nickname" : "查询用户的借款",
+               "notes" : "",
+               "parameters" : [
+                  {
+                     "allowMultiple" : true,
+                     "description" : "状态",
+                     "enum" : [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ],
+                     "name" : "status",
+                     "paramType" : "query",
+                     "required" : true,
+                     "type" : "integer"
+                  },{
+                     "allowMultiple" : true,
+                     "description" : "页数",
+                     "name" : "page",
+                     "paramType" : "query",
+                     "required" : false,
+                     "type" : "integer"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  },
+                  {
+                     "code" : 404,
+                     "message" : "用户不存在"
+                  }
+               ],
+               "summary" : "查询用户的借款",
+               "type" : "array"
+            }
+         ],
+         "path" : "/user/getUserLoans"
+      },{
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "items" : {
+                  "$ref" : "UserApplyInfo"
+               },
+               "method" : "GET",
+               "nickname" : "查询用户的借款申请",
+               "notes" : "",
+               "parameters" : [
+                  {
+                     "allowMultiple" : true,
+                     "description" : "状态",
+                     "enum" : [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ],
+                     "name" : "status",
+                     "paramType" : "query",
+                     "required" : true,
+                     "type" : "integer"
+                  },{
+                     "allowMultiple" : true,
+                     "description" : "页数",
+                     "name" : "page",
+                     "paramType" : "query",
+                     "required" : false,
+                     "type" : "integer"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  },
+                  {
+                     "code" : 404,
+                     "message" : "用户不存在"
+                  }
+               ],
+               "summary" : "查询用户的借款申请",
+               "type" : "array"
+            }
+         ],
+         "path" : "/user/getUserApplys"
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "deprecated" : "true",
+               "items" : {
+                  "$ref" : "UserBidInfo"
+               },
+               "method" : "GET",
+               "nickname" : "查询用户投标记录",
+               "parameters" : [
+                  {
+                     "allowMultiple" : true,
+                     "description" : "状态",
+                     "enum" : [ "0", "1", "2" ],
+                     "name" : "status",
+                     "paramType" : "query",
+                     "required" : true,
+                     "type" : "integer"
+                  },{
+                     "allowMultiple" : true,
+                     "description" : "页数",
+                     "name" : "page",
+                     "paramType" : "query",
+                     "required" : false,
+                     "type" : "integer"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  },
+                  {
+                     "code" : 404,
+                     "message" : "用户不存在"
+                  }
+               ],
+               "summary" : "查询用户投标记录",
+               "type" : "array"
+            }
+         ],
+         "path" : "/user/getUserBids"
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "deprecated" : "true",
+               "method" : "GET",
+               "nickname" : "获取当前用户信息",
+               "parameters" : [
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  },
+                  {
+                     "code" : 404,
+                     "message" : "用户不存在"
+                  }
+               ],
+               "summary" : "获取用户信息",
+               "type" : "User"
+            }
+         ],
+         "path" : "/user/getUser"
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {},
+               "deprecated" : "true",
+               "method" : "GET",
+               "nickname" : "检查注册手机号与邮箱是否可用",
+               "parameters" : [
+               {
+                     "allowMultiple" : true,
+                     "description" : "手机号码",
+                     "name" : "phone",
+                     "paramType" : "query",
+                     "required" : true,
+                     "type" : "string"
+                  },
+                 {
+                     "allowMultiple" : true,
+                     "description" : "邮箱",
+                     "name" : "email",
+                     "paramType" : "query",
+                     "required" : false,
+                     "type" : "string"
+                  }  ,
+                 {
+                     "allowMultiple" : true,
+                     "description" : "手机验证码",
+                     "name" : "phoneCode",
+                     "paramType" : "query",
+                     "required" : true,
+                     "type" : "string"
+                  }                       
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 500,
+                     "message" : "邮箱或者手机号已经被注册"
+                  }
+               ],
+               "summary" : "注册检查",
+               "type" : "void"
+            }
+         ],
+         "path" : "/user/regUserCheck"
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {},
+               "deprecated" : "true",
+               "method" : "GET",
+               "nickname" : "登录",
+               "parameters" : [
+               {
+                     "allowMultiple" : true,
+                     "description" : "手机号或邮箱",
+                     "name" : "username",
+                     "paramType" : "query",
+                     "required" : true,
+                     "type" : "string"
+                  },
+                 {
+                     "allowMultiple" : true,
+                     "description" : "密码",
+                     "name" : "pwd",
+                     "paramType" : "query",
+                     "required" : true,
+                     "type" : "string"
+                  }  
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 500,
+                     "message" : "登录失败等等异常"
+                  }
+               ],
+               "summary" : "登录",
+               "type" : "User"
+            }
+         ],
+         "path" : "/user/login"
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "deprecated" : "true",
+               "method" : "POST",
+               "nickname" : "更改用户消息设置",
+               "parameters" : [
+                  {
+                     "allowMultiple" : true,
+                     "description" : "夜间免打扰",
+                     "enum" : [ "false", "true"],
+                     "name" : "humanity",
+                     "paramType" : "body",
+                     "required" : true,
+                     "type" : "integer"
+                  },{
+                     "allowMultiple" : true,
+                     "description" : "消息设置,启用项用|分隔，如:  sms|weixin|email ",
+                     "name" : "messageSetting",
+                     "paramType" : "body",
+                     "required" : false,
+                     "type" : "string"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  },
+                  {
+                     "code" : 200,
+                     "message" : "修改成功"
+                  }
+               ],
+               "summary" : "更改用户消息设置",
+               "type" : "void"
+            }
+         ],
+         "path" : "/user/messageSetting "
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "deprecated" : "true",
+               "items" : {
+                  "$ref" : "Message"
+               },
+               "method" : "GET",
+               "nickname" : "查询用户个人消息",
+               "parameters" : [
+        {
+                     "allowMultiple" : true,
+                     "description" : "只取未读消息",
+                     "name" : "unread",
+                     "paramType" : "query",
+                     "required" : true,
+                     "type" : "integer"
+                  },
+                  {
+                     "allowMultiple" : true,
+                     "description" : "页数",
+                     "name" : "page",
+                     "paramType" : "query",
+                     "required" : false,
+                     "type" : "integer"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  }
+               ],
+               "summary" : "查询用户个人消息",
+               "type" : "array"
+            }
+         ],
+         "path" : "/user/message"
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "deprecated" : "true",
+               "method" : "POST",
+               "nickname" : "标记消息已读",
+               "parameters" : [
+      {
+                     "allowMultiple" : true,
+                     "description" : "id",
+                     "name" : "id",
+                     "paramType" : "path",
+                     "required" : true,
+                     "type" : "integer"
+                  },
+                  {
+                     "allowMultiple" : true,
+                     "description" : "全部标记",
+                     "name" : "all",
+           "enum" : [ "true", "false"],
+                     "paramType" : "query",
+                     "required" : false,
+                     "type" : "string"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  },
+                  {
+                     "code" : 404,
+                     "message" : "用户不存在"
+                  }
+               ],
+               "summary" : "标记消息已读",
+               "type" : "void"
+            }
+         ],
+         "path" : "/user/message/{id}"
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "deprecated" : "true",
+               "items" : {
+                  "$ref" : "Bank"
+               },
+               "method" : "PUT",
+               "nickname" : "增加银行卡",
+               "parameters" : [
+        {
+                     "allowMultiple" : true,
+                     "description" : "银行卡信息",
+                     "name" : "body",
+                     "paramType" : "body",
+                     "required" : true,
+                     "type" : "Bank"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  }
+               ],
+               "summary" : "增加银行卡",
+               "type" : "Bank"
+            },{
+               "authorizations" : {"oauth2" : [{}]},
+               "deprecated" : "true",
+               "items" : {
+                  "$ref" : "Bank"
+               },
+               "method" : "GET",
+               "nickname" : "查询用户银行卡",
+               "parameters" : [],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  }
+               ],
+               "summary" : "查询用户银行卡",
+               "type" : "array"
+            }
+         ],
+         "path" : "/user/bank"
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "deprecated" : "true",
+               "method" : "DELETE",
+               "nickname" : "删除银行卡",
+               "parameters" : [
+                  {
+                     "allowMultiple" : false,
+                     "description" : "id",
+                     "name" : "id",
+                     "paramType" : "path",
+                     "required" : true,
+                     "type" : "string"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  }
+               ],
+               "summary" : "删除银行卡",
+               "type" : "void"
+            },{
+               "authorizations" : {"oauth2" : [{}]},
+               "deprecated" : "true",
+               "method" : "POST",
+               "nickname" : "设置默认银行卡",
+               "parameters" : [
+                  {
+                     "allowMultiple" : false,
+                     "description" : "id",
+                     "name" : "id",
+                     "paramType" : "path",
+                     "required" : true,
+                     "type" : "string"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  }
+               ],
+               "summary" : "设置默认银行卡",
+               "type" : "void"
+            }
+         ],
+         "path" : "/user/bank/{id}"
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "deprecated" : "true",
+               "method" : "GET",
+               "nickname" : "发送邮件验证码",
+               "parameters" : [
+      {
+                     "allowMultiple" : false,
+                     "description" : "邮箱",
+                     "name" : "email",
+                     "paramType" : "query",
+                     "required" : true,
+                     "type" : "string"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  },
+                  {
+                     "code" : 200,
+                     "message" : "成功"
+                  }
+               ],
+               "summary" : "发送邮件验证码",
+               "type" : "void"
+            }
+         ],
+         "path" : "/user/mailCode"
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "deprecated" : "true",
+               "method" : "POST",
+               "nickname" : "绑定邮箱",
+               "parameters" : [
+      {
+                     "allowMultiple" : true,
+                     "description" : "邮箱",
+                     "name" : "email",
+                     "paramType" : "body",
+                     "required" : true,
+                     "type" : "string"
+                  },
+                  {
+                     "allowMultiple" : true,
+                     "description" : "验证码",
+                     "name" : "emailCode",
+                     "paramType" : "body",
+                     "required" : true,
+                     "type" : "string"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  },
+                  {
+                     "code" : 200,
+                     "message" : "成功"
+                  },
+                  {
+                     "code" : 403,
+                     "message" : "验证码不正确"
+                  },
+                  {
+                     "code" : 500,
+                     "message" : "邮箱已经被使用"
+                  }
+               ],
+               "summary" : "绑定邮箱",
+               "type" : "void"
+            }
+         ],
+         "path" : "/user/bindEmail"
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "deprecated" : "true",
+               "method" : "POST",
+               "nickname" : "更换手机号码",
+               "parameters" : [
+          {
+                     "allowMultiple" : true,
+                     "description" : "密码",
+                     "name" : "pwd",
+                     "paramType" : "body",
+                     "required" : true,
+                     "type" : "string"
+                  },
+      {
+                     "allowMultiple" : true,
+                     "description" : "新号码",
+                     "name" : "newPhone",
+                     "paramType" : "body",
+                     "required" : true,
+                     "type" : "string"
+                  },
+                  {
+                     "allowMultiple" : true,
+                     "description" : "旧手机验证码",
+                     "name" : "oldPhoneCode",
+                     "paramType" : "body",
+                     "required" : true,
+                     "type" : "string"
+                  },
+                  {
+                     "allowMultiple" : true,
+                     "description" : "新手机验证码",
+                     "name" : "newPhoneCode",
+                     "paramType" : "body",
+                     "required" : true,
+                     "type" : "string"
+                  },
+                  {
+                     "allowMultiple" : true,
+                     "description" : "身份证号码",
+                     "name" : "idCard",
+                     "paramType" : "body",
+                     "required" : true,
+                     "type" : "string"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  },
+                  {
+                     "code" : 500,
+                     "message" : "手机号已经被使用"
+                  },
+                  {
+                     "code" : 403,
+                     "message" : "验证码不正确"
+                  }
+               ],
+               "summary" : "更换手机号码，需要填写身份证号码",
+               "type" : "void"
+            }
+         ],
+         "path" : "/user/updatePhone"
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "deprecated" : "true",
+               "method" : "POST",
+               "nickname" : "更改密码",
+               "parameters" : [
+      {
+                     "allowMultiple" : true,
+                     "description" : "原密码",
+                     "name" : "oldPwd",
+                     "paramType" : "body",
+                     "required" : true,
+                     "type" : "string"
+                  },
+                  {
+                     "allowMultiple" : true,
+                     "description" : "新密码",
+                     "name" : "newPwd",
+                     "paramType" : "body",
+                     "required" : true,
+                     "type" : "string"
+                  },
+                  {
+                     "allowMultiple" : true,
+                     "description" : "手机验证码",
+                     "name" : "phoneCode",
+                     "paramType" : "body",
+                     "required" : true,
+                     "type" : "string"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  },
+                  {
+                     "code" : 403,
+                     "message" : "验证码不正确"
+                  }
+               ],
+               "summary" : "更改密码",
+               "type" : "void"
+            }
+         ],
+         "path" : "/user/updatePwd"
+      },
+      {
+         "operations" : [
+            {
+               "authorizations" : {"oauth2" : [{}]},
+               "deprecated" : "true",
+               "method" : "GET",
+               "nickname" : "给当前用户手机发送验证码",
+          "note" : "只有登录之后才能发送，不需要提供手机号码。用于修改手机号码使用",
+               "parameters" : [
+          {
+                     "description" : "是否为语音验证码",
+                     "name" : "voice",
+                     "paramType" : "query",
+                     "required" : false,
+                     "type" : "string"
+                  }
+               ],
+               "responseMessages" : [
+                  {
+                     "code" : 401,
+                     "message" : "登录过期，请重新登录"
+                  }
+               ],
+               "summary" : "给原号码发送验证码",
+               "type" : "void"
+            }
+         ],
+         "path" : "/user/phoneCode"
+      }
+   ],
+   "basePath" : "http://doc.ryct.cn:9000",
+   "models" : {
+      "Order" : {
+         "id" : "Order",
+         "properties" : {
+            "amount" : {
+               "description" : "金额",
+               "type" : "integer"
+            },
+            "baofuFee" : {
+               "description" : "宝付手续费",
+               "type" : "integer"
+            },
+            "createDate" : {
+               "description" : "订单创建时间",
+               "type" : "string"
+            },
+            "fee" : {
+               "description" : "平台手续费",
+               "type" : "integer"
+            },
+            "id" : {
+               "description" : "订单唯一主键",
+               "format" : "int64",
+               "maximum" : "100.0",
+               "minimum" : "0.0",
+               "type" : "integer"
+            },
+            "orderType" : {
+               "description" : "订单类型",
+               "enum" : [
+                  "投标",
+                  "满标",
+                  "流标",
+                  "还款",
+                  "充值",
+                  "提现",
+                  "赔付",
+                  "偿还担保",
+                  "回款"
+               ],
+               "type" : "string"
+            },
+            "status" : {
+               "description" : "订单状态",
+               "enum" : [ "已提交", "成功", "失败" ],
+               "type" : "string"
+            },
+            "updateDate" : {
+               "description" : "更新时间",
+               "type" : "string"
+            }
+         },
+         "required" : [ "id", "orderType", "amount", "createDate", "status" ]
+      },
+      "UserLoanInfo" : {
+         "id" : "UserLoanInfo",
+         "properties" : {
+            "title" : {
+               "description" : "标的标题",
+               "type" : "String"
+            },
+            "amount" : {
+               "description" : "投标金额",
+               "type" : "integer"
+            },
+            "status" : {
+               "description" : "状态 状态0=提交,1=担保中,2=忽略,3=投标中,4=还款中,5=已流标，6已还款，7已逾期，8逾期已赔付,9逾期已偿还，10逾期已赔付偿还",
+          "enum" : [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ],
+               "type" : "integer"
+            },
+            "statusStr" : {
+               "description" : "状态描述",
+               "type" : "string"
+            },
+            "assure" : {
+               "description" : "担保",
+               "type" : "string"
+            },
+       "progress" : {
+               "description" : "投标进度",
+               "type" : "integer"
+            },
+            "createDate" : {
+               "description" : "创建时间",
+               "type" : "string"
+            },
+            "returnDate" : {
+               "description" : "还款时间",
+               "type" : "string"
+            },
+            "id" : {
+               "description" : "唯一主键",
+               "format" : "int64",
+               "maximum" : "100.0",
+               "minimum" : "0.0",
+               "type" : "integer"
+            }
+         },
+         "required" : [ "id", "title","amount","status","statusStr","createDate" ]
+      },
+      "UserApplyInfo" : {
+         "id" : "UserApplyInfo",
+         "properties" : {
+            "title" : {
+               "description" : "标题",
+               "type" : "String"
+            },
+            "amount" : {
+               "description" : "申请金额",
+               "type" : "integer"
+            },
+            "status" : {
+               "description" : "状态 状态0=提交,1=担保中,2=忽略,3=投标中,4=还款中,5=已流标，6已还款，7已逾期，8逾期已赔付,9逾期已偿还，10逾期已赔付偿还",
+          "enum" : [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ],
+               "type" : "integer"
+            },
+            "statusStr" : {
+               "description" : "状态描述",
+               "type" : "string"
+            },
+            "assure" : {
+               "description" : "担保",
+               "type" : "string"
+            },
+       "row" : {
+               "description" : "利率",
+               "type" : "integer"
+            },
+            "createDate" : {
+               "description" : "创建时间",
+               "type" : "string"
+            },
+            "id" : {
+               "description" : "唯一主键",
+               "format" : "int64",
+               "maximum" : "100.0",
+               "minimum" : "0.0",
+               "type" : "integer"
+            }
+         },
+         "required" : [ "id", "title","amount","status","statusStr","createDate" ]
+      },
+      "UserBidInfo" : {
+         "id" : "UserBidInfo",
+         "properties" : {
+            "title" : {
+               "description" : "标的标题",
+               "type" : "String"
+            },
+            "amount" : {
+               "description" : "投标金额",
+               "type" : "integer"
+            },
+            "status" : {
+               "description" : "状态 0=已提交 1=成功 2=失败",
+          "enum" : [ "0", "1", "2" ],
+               "type" : "integer"
+            },
+            "statusStr" : {
+               "description" : "状态描述",
+               "type" : "string"
+            },
+            "returnDate" : {
+               "description" : "还款日期",
+               "type" : "string"
+            },
+            "createDate" : {
+               "description" : "创建时间",
+               "type" : "string"
+            },
+            "id" : {
+               "description" : "唯一主键",
+               "format" : "int64",
+               "maximum" : "100.0",
+               "minimum" : "0.0",
+               "type" : "integer"
+            }
+         },
+         "required" : [ "id", "title","amount","status","statusStr","createDate" ]
+      },
+      "User" : {
+         "id" : "User",
+         "properties" : {
+            "assure" : {
+               "description" : "已用担保额度",
+               "type" : "integer"
+            },
+            "assureMax" : {
+               "description" : "最大担保额度",
+               "type" : "integer"
+            },
+            "balance" : {
+               "description" : "账户可用余额",
+               "type" : "integer"
+            },
+            "borrowIn" : {
+               "description" : "已借入金额",
+               "type" : "integer"
+            },
+            "borrowOut" : {
+               "description" : "已借出金额",
+               "type" : "integer"
+            },
+            "createDate" : {
+               "description" : "订单创建时间",
+               "type" : "string"
+            },
+            "email" : {
+               "description" : "邮箱前2位",
+               "type" : "string"
+            },
+            "ext" : {
+               "$ref" : "UserExt"
+            },
+            "id" : {
+               "description" : "用户唯一主键",
+               "format" : "int64",
+               "maximum" : "100.0",
+               "minimum" : "0.0",
+               "type" : "integer"
+            },
+            "lockMoney" : {
+               "description" : "冻结金额",
+               "type" : "integer"
+            },
+            "phone" : {
+               "description" : "手机号后4位",
+               "type" : "integer"
+            },
+            "realName" : {
+               "description" : "姓名",
+               "type" : "string"
+            }
+         },
+         "required" : [ "id", "balance" ]
+      },
+      "UpdateUser" : {
+         "id" : "UpdateUser",
+         "properties" : {
+            "assure" : {
+               "description" : "已用担保额度",
+               "type" : "integer"
+            },
+            "assureMax" : {
+               "description" : "最大担保额度",
+               "type" : "integer"
+            },
+            "status" : {
+               "description" : "状态 0=未验证，1=已验证身份,2=封禁(不能登录),3冻结(资金不可动)",
+          "enum" : [ "0", "1", "2","3" ],
+               "type" : "integer"
+            },
+            "groupType" : {
+               "description" : "用户类型0=普通用户 1=担保、小贷公司 2=企业",
+          "enum" : [ "0", "1", "2" ],
+               "type" : "integer"
+            },
+       "assureScale" : {
+               "description" : "担保比例",
+               "type" : "integer"
+            },
+            "idCard" : {
+               "description" : "身份证",
+               "type" : "string"
+            },
+            "email" : {
+               "description" : "邮箱",
+               "type" : "string"
+            },
+            "id" : {
+               "description" : "唯一主键",
+               "format" : "int64",
+               "maximum" : "100.0",
+               "minimum" : "0.0",
+               "type" : "integer"
+            },
+            "lockMoney" : {
+               "description" : "冻结金额",
+               "type" : "integer"
+            },
+            "phone" : {
+               "description" : "手机号",
+               "type" : "string"
+            },
+            "realName" : {
+               "description" : "姓名",
+               "type" : "string"
+            }
+         },
+         "required" : [ "id" ]
+      },
+      "RegUser" : {
+         "id" : "RegUser",
+         "properties" : {
+            "phoneCode" : {
+               "description" : "手机验证码",
+          "type" : "string"
+            },
+            "code" : {
+               "description" : "图形验证码",
+               "type" : "string"
+            },
+       "pwd" : {
+               "description" : "密码",
+               "type" : "integer"
+            },
+            "recommend" : {
+               "description" : "邀请人",
+               "type" : "integer"
+            },
+            "idCard" : {
+               "description" : "身份证",
+               "type" : "string"
+            },
+            "email" : {
+               "description" : "邮箱",
+               "type" : "string"
+            },
+            "phone" : {
+               "description" : "手机号",
+               "type" : "string"
+            },
+            "realName" : {
+               "description" : "姓名",
+               "type" : "string"
+            }
+         },
+         "required" : [ "realName","phone","idCard","pwd","phoneCode","code"]
+      },
+      "Bank" : {
+         "id" : "Bank",
+         "properties" : {
+            "card" : {
+               "description" : "卡号后4位",
+               "type" : "string"
+            },
+            "bankName" : {
+               "description" : "银行",
+               "type" : "string"
+            },
+            "province" : {
+               "description" : "省",
+               "type" : "string"
+            },
+            "city" : {
+               "description" : "城市",
+               "type" : "string"
+            },
+            "add" : {
+               "description" : "开户行",
+               "type" : "string"
+            },
+       "default" : {
+               "description" : "设为默认提现银行卡",
+               "type" : "boolean"
+            },
+       "uid" : {
+               "description" : "用户id",
+               "type" : "integer"
+            },
+            "id" : {
+               "description" : "id",
+               "type" : "integer"
+            }
+         },
+         "required" : [ "card","bankName","province","city","add"]
+      },
+      "Message" : {
+         "id" : "Message",
+         "properties" : {
+            "content" : {
+               "description" : "内容",
+               "type" : "string"
+            },
+       "isRead" : {
+               "description" : "是否已读",
+               "type" : "boolean"
+            },
+            "id" : {
+               "description" : "id",
+               "type" : "integer"
+            }
+         },
+         "required" : [ "id","content","isRead"]
+      },
+      "UserExt" : {
+         "id" : "UserExt",
+         "properties" : {
+            "assureScale" : {
+               "description" : "担保比例",
+               "type" : "integer"
+            },
+            "autoRepay" : {
+               "description" : "自动还款设置",
+               "enum" : [ true, false ],
+               "type" : "boolean"
+            },
+            "headimg" : {
+               "description" : "头像地址",
+               "type" : "string"
+            },
+            "humanity" : {
+               "description" : "人性化设置",
+               "enum" : [ true, false ],
+               "type" : "boolean"
+            },
+            "id" : {
+               "description" : "用户id",
+               "type" : "integer"
+            },
+            "messageSetting" : {
+               "description" : "消息设置",
+               "type" : "string"
+            },
+            "name" : {
+               "description" : "姓名",
+               "type" : "string"
+            },
+            "weixin" : {
+               "description" : "微信token",
+               "type" : "string"
+            }
+         }
+      }
+   },
+   "produces" : [ "application/json"],
+   "resourcePath" : "/user",
+   "swaggerVersion" : "1.0"
+}

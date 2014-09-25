@@ -1,0 +1,115 @@
+body{overflow-x: hidden;}
+a:focus{outline: none;}
+.navbar{background-color: #fff;margin-bottom: 0;}
+.container-fluid{background-color:#eee;padding-top: 60px;min-height:600px;}
+.nav li a{font-size: 16px!important;}
+.nav li ul li a{font-size: 14px!important;}
+.nav li.active a{background-color: #F5F5F5!important;}
+.btn-group{margin-bottom: 10px;}
+.panel-body .row{margin-bottom:8px;}
+.sodo-logo{font-size: 24px;color: #000;padding-left: 20px;padding-right: 100px;padding-top: 8px;}
+.sodo-navbar-header{padding-right: 15px;float:none;width: 100%;}
+#sodo-dashboard .row{padding:10px 40px;}
+.sodo-summary{text-align: center;font-size: 16px;margin-top:20px;margin-right: 20px;color:#999;}
+.sodo-summary-panels .panel{margin:10px 30px!important;}
+.sodo-summary-money{font-size: 32px!important;margin-bottom:20px;}
+.sodo-expense-summary{border-top:1px solid #DDD;}
+.sodo-expense-summary .sodo-summary-money{font-size:22px!important;color:#aaa;margin-bottom:8px;}
+.sodo-expense-summary .sodo-summary{margin-right:0;}
+.sodo-expense-summary .sodo-summary-plan{font-size: 14px;color:#ddd;margin-bottom:8px;display: inline-block;border-right:1px solid #DDD;padding-right:3px;}
+.sodo-expense-summary .sodo-summary-difference{font-size:14px;display: inline-block;}
+.sodo-expense-summary .sodo-gain{color:green;}
+.sodo-expense-summary .sodo-loss{color: red;}
+.sodo-border-right{border-right:1px solid #DDD;}
+.sodo-finance-income{color:#95ceff;}
+.sodo-finance-cost{color:#ffbc75;}
+.sodo-finance-expenditure{color:#F8587C;}
+.sodo-finance-profit{color:#50c982;}
+.sodo-fixed-panel{height: 400px;width:300px;margin-top: 20px;overflow: auto;}
+.sodo-btn-close{color: #080808;cursor: pointer;}
+.sodo-btn-close:hover{text-decoration: none;}
+.panel-heading .sodo-btn-close{float: right;}
+.sodo-label{color:#999;display:inline-block;margin-right:5px;padding-left: 5px;}
+.sodo-sticky{overflow-x: hidden;}
+.sodo-stuck{position:fixed;left:15px;right:15px;top:50px;padding:10px;box-shadow: 2px 3px 4px #DDD;background:#FAFAFA;z-index:998;}
+.sodo-block{display:block;}
+.sodo-inline-bar{position:absolute;background:#d9edf7;filter:alpha(Opacity=80);-moz-opacity:0.8;opacity: 0.8;padding:5px 5px 0 0;}
+.sodo-inline-bar a{float:right;display:inline-block;margin:0 10px;}
+.sodo-icon-btn{font-size:12px!important;}
+.sodo-separator-line{display:inline-block;width:1px;height:12px;padding-left:4px;margin-right:4px;border-right:1px solid #DDD;}
+.sodo-bar-phase-1{background-color: #5BC0DE}
+.sodo-bar-phase-2{background-color: #428BCA;}
+.sodo-bar-phase-3{background-color: #659CC9}
+.sodo-bar-phase-4{background-color: #79A5C9}
+.sodo-bar-phase-5{background-color: #67C451}
+.sodo-progress-red .sodo-bar-phase-1{background-color: #D9534F}
+.sodo-progress-red .sodo-bar-phase-2{background-color: #D96E6C}
+.sodo-progress-red .sodo-bar-phase-3{background-color: #D98382}
+.sodo-progress-red .sodo-bar-phase-4{background-color: #67C451}
+.sodo-detail-slide-panel{
+    display: none;
+    width: 350px;
+    height:400px;
+    margin-top:20px;
+    margin-left: 10px;
+    float: left;
+}
+.sodo-right-slide-panel{
+    width: 350px;
+    height:400px;
+    float: right;
+    margin-top:20px;
+    margin-right: -400px;
+}
+.sodo-left-slide-panel{
+    width: 350px;
+    height:400px;
+    float: left;
+    margin-top:20px;
+    margin-left: -750px;
+}
+
+.sodo-project{position: relative;}
+.sodo-boxshadow{box-shadow:1px 2px 3px #ddd;}
+
+.sodo-new-panel{
+    width:700px;
+    position:fixed;
+    top:50px;
+    margin-left:-750px;
+    z-index:999;
+    bottom:0;
+    margin-bottom: 0;
+    background: #fafafa;
+}
+#sodo-project-detail-panel{
+    position: fixed;
+    right:0;
+    top:50px;
+    width: 900px;
+    margin-right: -950px;
+    z-index:998;
+    bottom:0;
+    margin-bottom: 0;
+    background:#FAFAFA;
+    overflow-y: scroll;
+}
+
+#sodo-project-detail-panel .sodo-summary{margin-bottom:20px!important;margin-top:0px;}
+#sodo-project-detail-panel .sodo-summary div{font-size:14px;color:#999;}
+
+
+.sodo-memo{
+    font-size:12px;
+    color: #999;
+    padding:10px;
+    margin:0 0 15px 0;
+    background:#f5f5f5;
+    border-radius:3px;
+}
+.sodo-panel-body{position: relative;}
+.sodo-panel-body .sodo-btn-close{position:absolute!important;top:20px;right:20px;}
+
+
+.sodo-no-radius{border-radius:0!important;}
+#sodo-incoming-line-chart{height:300px;}

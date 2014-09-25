@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:ng="http://angularjs.org"  ng-app='jiantuoApp' ng-csp="" scroll id="ng-app">
+<base href=".">
+<ng-include src="'/views/header.html'"></ng-include>
+<div class="container-fluid">
+<div class="panel panel-default">
+    <div class="panel-heading">会计科目</div>
+    <div class="panel-body">
+        <ul class="nav nav-tabs" role="tablist" id="accounting-subjects-tab">
+            <li role="presentation" class="active"><a href="#assets">资产</a></li>
+            <li role="presentation"><a href="#liabilities">负债</a></li>
+            <li role="presentation"><a href="#profit-and-loss">损益</a></li>
+            <li role="presentation"><a href="#owners-equity">所有者权益</a></li>
+            <li role="presentation"><a href="#cost">成本</a></li>
+            <button type="button" class="btn btn-primary" style="float: right;">新建</button>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="assets">
+                <div class="well sodo-fixed-panel col-md-3">
+                    <div class="zTreeWrapper">
+                        <ul id="asset-subjects" class="ztree"></ul>
+                    </div><div class="zTreeWrapper">
+                        <ul id="asset-subjects" class="ztree"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="liabilities">...</div>
+            <div class="tab-pane fade" id="profit-and-loss">...</div>
+            <div class="tab-pane fade" id="owners-equity">...</div>
+            <div class="tab-pane fade" id="cost">...</div>
+        </div>
+    </div>
+    <div class="panel panel-default" id="sodo-accounting-subject-detail-panel">
+        <div class="panel-heading">会计科目明细</div>
+        <div class="panel-body">
+            Panel content
+        </div>
+    </div>
+</div>
+<script src="scripts/vendor/jquery.min.js"></script>
+<script src="scripts/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="scripts/vendor/angular/angular.min.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/navigation.js"></script>
+<script src="scripts/controllers/account.js"></script>
+<script src="scripts/vendor/ztree/jquery.ztree.core-3.5.js"></script>
+<SCRIPT type="text/javascript">
+    <!--
+    var setting = {
+        view: {
+            showIcon: function(treeId, treeNode) {
+                return treeNode.isParent;
+            }
+        },
+        async: {
+            enable: true,
+            url:"http://192.168.1.106:3000/getAccountAdapter"
+        },
+        callback: {
+            onClick: function(event,treeID, treeNode) {
+                var $well=$('#'+treeID).parents('.well');
+                var $panel=$('#sodo-accounting-subject-detail-panel');
+                $well.parent().append($panel);
+                $panel.animate({ width: 'show' },500);
+            },
+            onAsyncSuccess:function(){
+                alert('success');
+
+            }
+        }
+    };
+
+    var zNodes =[
+        { name:"父节点1 - 展开", open:true,
+            children: [
+                { name:"父节点11 - 折叠",
+                    children: [
+                        { name:"叶子节点111"},
+                        { name:"叶子节点112"},
+                        { name:"叶子节点113"},
+                        { name:"叶子节点114"}
+                    ]},
+                { name:"父节点12 - 折叠",
+                    children: [
+                        { name:"叶子节点121"},
+                        { name:"叶子节点122"},
+                        { name:"叶子节点123"},
+                        { name:"叶子节点124"}
+                    ]},
+                { name:"父节点13 - 没有子节点", isParent:true}
+            ]},
+        { name:"父节点2 - 折叠",
+            children: [
+                { name:"父节点21 - 展开", open:true,
+                    children: [
+                        { name:"叶子节点211"},
+                        { name:"叶子节点212"},
+                        { name:"叶子节点213"},
+                        { name:"叶子节点214"}
+                    ]},
+                { name:"父节点22 - 折叠",
+                    children: [
+                        { name:"叶子节点221"},
+                        { name:"叶子节点222"},
+                        { name:"叶子节点223"},
+                        { name:"叶子节点224"}
+                    ]},
+                { name:"父节点23 - 折叠",
+                    children: [
+                        { name:"叶子节点231"},
+                        { name:"叶子节点232"},
+                        { name:"叶子节点233"},
+                        { name:"叶子节点234"}
+                    ]}
+            ]},
+        { name:"父节点3 - 没有子节点", isParent:true}
+
+    ];
+
+    $(document).ready(function(){
+        $('#accounting-subjects-tab a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        });
+        $('#accounting-subjects-tab a[href="#assets"]').tab('show');
+        $.fn.zTree.init($("#asset-subjects"), setting,zNodes);
+    });
+    //-->
+</SCRIPT>
+</div>
+</body>
+</html>

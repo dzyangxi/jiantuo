@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <h2>HR</h2>
+      <h3>Department</h3>
+      <ul>
+        <li><a href="/department">Department Tree </a></li>
+      </ul>
+      <h3>Employee</h3>
+      <ul>
+        <li><a href="/employee">Employee List</a></li>
+      </ul>
+    <h2> CRM </h2>
+      <h3> Customer </h3>
+      <ul>
+        <li><a href="/customer"> Customer All </a></li>
+      </ul>
+      <h3> Contract </h3>
+      <ul>
+        <li><a href="/contract/JT201408001"> Contract by sn</a></li>
+      </ul> 
+    <h2>Project</h2>
+      <h3>Project</h3>
+      <ul>
+  	    <li><a href="/project">Project list</a></li>
+  	    <li><a href="/project/53fcaafe3347db8d15f53d8c">Project by id</a></li>
+      </ul>
+    <h2>Account</h2>
+      <h3>AccountTitle</h3>
+        <ul>
+          <li><a href="/accounttitle">AccountTitle Tree</a></li>
+          <li><a href="/accounttitleobject">AccountTitleObject Tree</a></li>
+          <li><a href="/accounttitle/1001"> AccountTitle by code</a></li>
+  	    </ul>
+  </body>
+</html>

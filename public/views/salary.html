@@ -1,0 +1,54 @@
+<div class="panel panel-default sodo-salary">
+    <div class="panel-heading">
+        工资
+    </div>
+    <div class="panel-body stickem-container">
+        <div class="sodo-sticky">
+            <div class="btn-group">
+                <btn sodo-type="new"></btn>
+            </div>
+            <div class="col-lg-4 pull-right">
+                <div class="input-group">
+                    <input type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <table live-query="setupInlinebar" class="table table-condensed table-hover table-striped" id="sodo-project-table">
+            <tr>
+                <th>姓名</th>
+                <th>基本工资</th>
+                <th>出勤天数</th>
+                <th>实际工资</th>
+                <th>全勤</th>
+                <th>绩效</th>
+                <th>工龄</th>
+                <th>签单业绩</th>
+                <th>提成</th>
+                <th>合计</th>
+                <th>请假</th>
+                <th>迟到</th>
+                <th>合计</th>
+                <th>实发金额</th>
+            </tr>
+            <tr ng-repeat="salary in salaries">
+                <td align="left">{{salary.name}}</td>
+                <td align="left">{{salary.base}}</td>
+                <td align="left">{{salary.attendance}}</td>
+                <td align="left">{{salary.real}}</td>
+                <td align="left">{{salary.fullAttendance}}</td>
+                <td align="left">{{salary.performance}}</td>
+                <td align="left">{{salary.seniority}}</td>
+                <td align="left">{{salary.achievement}}</td>
+                <td align="left">{{salary.commission}}</td>
+                <td align="left">{{salary.gainSummary}}</td>
+                <td align="left">{{salary.leave}}</td>
+                <td align="left">{{salary.beLate}}</td>
+                <td align="left">{{salary.lossSummary}}</td>
+                <td align="left">{{salary.summary}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

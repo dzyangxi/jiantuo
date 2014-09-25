@@ -1,0 +1,46 @@
+<head>
+    <meta charset="UTF-8">
+    <title>建拓装饰内部管理系统</title>
+    <link rel="stylesheet" href="/scripts/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/scripts/vendor/datepicker/datepicker3.css">
+    <link rel="stylesheet" href="/scripts/vendor/messenger/css/messenger.css">
+    <link rel="stylesheet" href="/scripts/vendor/messenger/css/messenger-theme-future.css">
+    <link rel="stylesheet" href="/scripts/vendor/ztree/css/zTreeStyle/zTreeStyle.css">
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="NavigationCtrl">
+    <div class="sodo-navbar-header navbar-header">
+        <div class="nav navbar-nav sodo-logo">
+            建拓装饰
+        </div>
+        <ul class="nav navbar-nav" ng-controller="NavigationCtrl">
+            {{name}}
+            <li ng-repeat="menu in menus track by $index">
+                <a ng-if="menu.children" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    {{menu.name}}
+                    <span class="caret"></span>
+                </a>
+                <ul ng-if="menu.children" class="dropdown-menu" role="menu">
+                    <li ng-repeat="submenu in menu.children track by $index">
+                        <a href="{{submenu.url}}">{{submenu.name}}</a>
+                    </li>
+                </ul>
+                <a ng-if="menu.children==undefined" href="{{menu.url}}">{{menu.name}}</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"></span>
+                    刘南兵
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">个人信息</a></li>
+                    <li><a href="#">注销</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
