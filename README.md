@@ -26,3 +26,5 @@ package.json:node服务要用到的包配置
 	npm install
 	grunt server
 	grunt test
+
+	
